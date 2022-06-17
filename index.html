@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Max Resolution YouTube Thumbnail Finder</title>
+  <meta name="description" content="Super simple youtube thumbnail finder. Just paste the URL and press enter.">
+</head>
+
+<body style="text-align:center">
+  <input type="text" onkeydown="if(event.key==='Enter') go()" placeholder="Paste URL & press enter" autofocus>
+  <br>
+  <img>
+  <!-- footer css from https://stackoverflow.com/a/59997588 -->
+  <a href="https://www.linktr.ee/largomc" style="position: absolute; bottom: 0; left: 0; width: 100%;">By LargoMC</p>	
+  <script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.min.js"></script>
+  <script>
+    function go() {
+      var id = getVideoId(document.querySelector('input').value).id
+      if (id) document.querySelector('img').src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg'
+    }
+  </script>
+</body>
+</html>
