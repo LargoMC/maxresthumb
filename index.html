@@ -8,8 +8,9 @@
   <meta name="description" content="Super simple youtube thumbnail finder. Just paste the URL and press enter.">
 </head>
 
-<body style="text-align:center">
+<body style="text-align: center; font-family: Helvetica, Verdana, Arial;">
   <input type="text" onkeydown="if(event.key==='Enter') go()" placeholder="Paste URL & press enter" autofocus>
+  <h1></h1>
   <br>
   <img>
   <!-- footer css from https://stackoverflow.com/a/59997588 -->
@@ -17,8 +18,12 @@
   <script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.min.js"></script>
   <script>
     function go() {
-      var id = getVideoId(document.querySelector('input').value).id
-      if (id) document.querySelector('img').src = 'https://i.ytimg.com/vi/' + id + '/maxresdefault.jpg'
+      var val = getVideoId(document.querySelector('input').value)
+      if (val.service !== "youtube" || !val.id) {
+        document.querySelector('h1').innerText = "Invalid link"
+      } else {
+      document.querySelector('img').src = 'https://i.ytimg.com/vi/' + val.id + '/maxresdefault.jpg'
+      }
     }
   </script>
 </body>
