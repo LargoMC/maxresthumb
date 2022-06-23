@@ -9,22 +9,11 @@
 </head>
 
 <body style="text-align: center; font-family: Helvetica, Verdana, Arial;">
-  <input type="text" onkeydown="if(event.key==='Enter') go()" placeholder="Paste URL & press enter" autofocus>
-  <h1></h1>
+  <input type="text" onkeydown="if(event.key==='Enter') document.querySelector('img').src = 'https://i.ytimg.com/vi/' + getVideoId(this.value).id + '/maxresdefault.jpg'" placeholder="Paste URL & press enter" autofocus>
   <br>
   <img>
   <!-- footer css from https://stackoverflow.com/a/59997588 -->
   <a href="https://www.linktr.ee/largomc" style="position: absolute; bottom: 0; left: 0; width: 100%;">By LargoMC</a>	
   <script src="https://cdn.jsdelivr.net/npm/get-video-id/dist/get-video-id.min.js"></script>
-  <script>
-    function go() {
-      var val = getVideoId(document.querySelector('input').value)
-      if (val.service !== "youtube" || !val.id) {
-        document.querySelector('h1').innerText = "Invalid link"
-      } else {
-      document.querySelector('img').src = 'https://i.ytimg.com/vi/' + val.id + '/maxresdefault.jpg'
-      }
-    }
-  </script>
 </body>
 </html>
